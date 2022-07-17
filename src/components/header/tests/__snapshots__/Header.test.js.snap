@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header check if renders properly 1`] = `
+<nav
+  className="header"
+>
+  <div
+    className="mocked-nav-link"
+  />
+  <div
+    className="mocked-nav-link"
+  />
+</nav>
+`;

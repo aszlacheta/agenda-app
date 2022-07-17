@@ -1,0 +1,41 @@
+@use '../variables.scss';
+
+.header {
+    display: flex;
+    height: variables.$headerHeight;
+    padding: 0 50px;
+
+    background-color: variables.$headerBackgroundColor;
+
+    a {
+        position: relative;
+        display: inline-block;
+        margin: variables.$headerLinkPadding;
+
+        line-height: variables.$headerHeight;
+        text-transform: uppercase;
+        letter-spacing: variables.$headerLinkLetterSpacing;
+        text-shadow: variables.$headerLinkTextShadow;
+        color: variables.$headerLinkColor;
+        font-size: variables.$headerLinkFontSize;
+
+        &.active {
+            font-family: variables.$headerLinkActiveFontFamily;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: calc(variables.$headerHeight / 4);
+            left: calc(variables.$headerLinkLetterSpacing / 2 * -1);
+            width: 0%;
+            height: variables.$headerLinkHoverLineHeight;
+            background-color: variables.$headerLinkColor;
+            transition: variables.$headerLinkHoverTransition;
+        }
+    
+        &:hover:after {
+            width: 100%;
+        }
+    }
+}

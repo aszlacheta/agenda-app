@@ -1,0 +1,28 @@
+// general
+$backgroundColor: rgb(241, 241, 241);
+
+// header
+$headerHeight: 200px;
+$headerBackgroundColor: transparent;
+
+$headerLinkWidth: 10%;
+$headerLinkPadding: 0 4%;
+$headerLinkLetterSpacing: 0.6rem;
+$headerLinkTextShadow: 1px 1px 0 white;
+$headerLinkColor: gray;
+$headerLinkFontSize: 0.9rem;
+$headerLinkActiveFontFamily: Lato Regular;
+
+$headerLinkHoverLineHeight: 1px;
+$headerLinkHoverTransition: all 200ms ease-in-out;
+
+// footer
+$footerHeight: 100px;
+$footerPadding: 0 50px;
+$footerBackground: linear-gradient(90deg, rgba(0,0,0,0) 63%, rgba(0,0,0,0.08589373249299714) 95%, rgba(0,0,0,0.14) 100%);
+
+$footerTextFontSize: 0.7rem;
+$footerTextLetterSpacing: 0.3rem;
+
+// page container
+$pageMargin: 0 8%;

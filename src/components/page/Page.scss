@@ -1,0 +1,8 @@
+@use '../variables.scss';
+
+.page-children-container {
+    display: flex;
+    flex: 1;
+
+    margin: variables.$pageMargin;
+}

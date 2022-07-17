@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer check if renders properly 1`] = `
+<div
+  className="footer"
+>
+  <span>
+    All rights reserved @ 
+    2022
+  </span>
+</div>
+`;

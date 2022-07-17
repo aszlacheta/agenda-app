@@ -1,0 +1,16 @@
+@use '../variables.scss';
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    height: variables.$footerHeight;
+    padding: variables.$footerPadding;
+
+    background: variables.$footerBackground;
+
+    line-height: variables.$footerHeight;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: variables.$footerTextFontSize;
+    letter-spacing: variables.$footerTextLetterSpacing;
+}

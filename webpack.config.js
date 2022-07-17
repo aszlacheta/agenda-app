@@ -10,6 +10,9 @@ module.exports = {
         filename: 'bundle.[hash].js'
     },
     devtool: 'inline-source-map',
+    resolve: {
+        extensions: ['.js', '.jsx', '.json'],
+    },
     module: {
         rules: [
             {
@@ -19,25 +22,24 @@ module.exports = {
             },
             {
                 test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.s[ac]ss$/i,
                 use: [
-                    {
-                        loader: 'style-loader'
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localsConvention: 'camelCase',
-                            sourceMap: true
-                        }
-                    }
-                ]
-            }
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+                    // Translates CSS into CommonJS
+                    "css-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
+                ],
+            },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Your custom title",
+            title: "My agenda app",
             template: './src/index.html'
         })
     ],
