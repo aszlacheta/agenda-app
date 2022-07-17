@@ -1,0 +1,12 @@
+{
+    "contact": {
+        "notImplemented": "Ta strona nie jest jeszcze zaimplementowana..."
+    },
+    "footer": {
+        "label": "Wszelkie prawa zastrzeżone @ {{year}}"
+    },
+    "menu": {
+        "Agenda": "Agenda",
+        "Contact": "Kontakt"
+    }
+}
