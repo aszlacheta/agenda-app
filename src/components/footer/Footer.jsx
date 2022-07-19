@@ -7,5 +7,5 @@ export default function Footer() {
     const { t } = useTranslation();
 
 
-    return <div className="footer"><span>{t('footer.label', {year})}</span></div>
+    return <div className="footer" data-cy="footer"><span>{t('footer.label', {year})}</span></div>
 }

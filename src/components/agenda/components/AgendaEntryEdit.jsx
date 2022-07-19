@@ -96,7 +96,7 @@ export default function AgendaEntryEdit({ index, agendaId, entry, editable, dele
         return ret;
     }
 
-    return <div className={`agenda-entry agenda-entry-edit`} ref={myRef}>
+    return <div className={`agenda-entry agenda-entry-edit`} ref={myRef} data-cy="agenda-edit-entry">
         <div className="index">{index}</div>
 
         {editable && <TimePicker
@@ -110,10 +110,11 @@ export default function AgendaEntryEdit({ index, agendaId, entry, editable, dele
             disabledMinutes={disableMinutes}
             hourStep={parseInt(process.env.HOUR_STEP)}
             minuteStep={parseInt(process.env.MINUTE_STEP)}
+            data-cy="timepicker"
         />}
         {editable && <div className="texts-edit">
-            <input className="name" value={name} onChange={onNameChange} placeholder={"Set name..."} />
-            <textarea className="description" value={description} onChange={onDescriptionChange} placeholder={"Set description..."} />
+            <input className="name" value={name} onChange={onNameChange} placeholder={"Set name..."} data-cy="edit-name" />
+            <textarea className="description" value={description} onChange={onDescriptionChange} placeholder={"Set description..."} data-cy="edit-description" />
         </div>}
 
         <div className="actions">

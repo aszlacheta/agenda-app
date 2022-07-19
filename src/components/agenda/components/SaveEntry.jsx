@@ -17,5 +17,5 @@ export default function SaveEntry({ entryId, form }) {
             });
     }
 
-    return <button className="save-entry" onClick={onClick}>save</button>
+    return <button className="save-entry" onClick={onClick} data-cy="save-button">save</button>
 }

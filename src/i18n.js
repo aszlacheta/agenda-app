@@ -19,6 +19,9 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    detection: {
+      order: ['navigator'],
+    },
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: ['en', 'pl'],
     interpolation: {

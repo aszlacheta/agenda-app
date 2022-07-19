@@ -17,7 +17,7 @@ export default function AgendaEntry({ index, agendaId, entry, editable, deletabl
         }
     }
 
-    return <div className={`agenda-entry ${editable ? 'editable' : ''}`} onClick={onEdit}>
+    return <div className={`agenda-entry ${editable ? 'editable' : ''}`} onClick={onEdit} data-cy="agenda-entry">
         <div className="index">{index}</div>
         <div className="start-date">{moment(startDate).format(hourFormat)}</div>
 

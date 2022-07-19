@@ -59,5 +59,5 @@ export default function AddEntry({ disabled }) {
 
     }
 
-    return <button className="add-entry" onClick={onClick} disabled={disabled} >+</button>
+    return <button className="add-entry" onClick={onClick} disabled={disabled} data-cy="add-entry">+</button>
 }

@@ -20,5 +20,5 @@ export default function DeleteButton({ agendaId, entryId }) {
             });
     }
 
-    return <button onClick={onClick}>x</button>
+    return <button onClick={onClick} data-cy="delete-entry">x</button>
 }

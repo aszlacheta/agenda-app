@@ -7,7 +7,7 @@ export default function Page({ children }) {
 
     return <>
         <Header />
-        <div className="page-children-container">
+        <div className="page-children-container" data-cy="page">
             {children}
         </div>
         <Footer />

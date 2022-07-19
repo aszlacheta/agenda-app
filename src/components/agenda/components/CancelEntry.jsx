@@ -13,5 +13,5 @@ export default function CancelEntry({ entryId, isNew }) {
         }
     }
 
-    return <button className="cancel-entry" onClick={onClick}>cancel</button>
+    return <button className="cancel-entry" onClick={onClick} data-cy="cancel-button">cancel</button>
 }
