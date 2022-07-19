@@ -3,12 +3,13 @@
 .footer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: variables.$footerHeight;
+    max-height: variables.$footerMaxHeight;
     padding: variables.$footerPadding;
 
     background: variables.$footerBackground;
 
-    line-height: variables.$footerHeight;
     text-align: right;
     text-transform: uppercase;
     font-size: variables.$footerTextFontSize;

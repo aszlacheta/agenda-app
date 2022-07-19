@@ -1,6 +1,8 @@
-@use './components/variables.scss';
+@use "./components/variables.scss";
 
-html, body, #root {
+html,
+body,
+#root {
     height: 100%;
 }
 
@@ -8,7 +10,7 @@ body {
     margin: 0;
     background-color: variables.$backgroundColor;
 
-    font-family: 'Lato Light';
+    font-family: "Lato Light";
 }
 
 a {
@@ -21,3 +23,57 @@ a {
     flex-direction: column;
 }
 
+button {
+    cursor: pointer;
+    box-shadow: 3px 5px 20px rgb(0 0 0 / 10%), -15px -15px 30px white, 1px 2px 5px white;
+    border: none;
+    border-radius: 7px;
+    height: 3rem;
+    min-width: 30%;
+    margin: 10px;
+    padding: 20px;
+    line-height: 10px;
+    transition: variables.$transition;
+    color: gray;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: 'Lato Regular';
+
+
+    &[disabled] {
+        cursor: not-allowed;
+        background: transparent;
+        box-shadow: 0px 1px 0px rgb(0 0 0 / 4%) inset, 0px 1px 0px rgba(white, 0.4);
+
+    }
+
+    &:not([disabled]):not(:focus):hover {
+        box-shadow: 0px 2px 10px rgb(0 0 0 / 10%), -1px -5px 15px white, -1px -2px 5px white;
+    }
+
+    &:focus {
+        transition: none;
+        box-shadow: 0px 5px 15px rgb(0 0 0 / 8%) inset, 0px 1px 0px rgb(0 0 0 / 8%) inset, 0px 1px 0px white;
+    }
+}
+
+input,
+textarea,
+.rc-time-picker-input {
+    border: none;
+    box-shadow: 5px 5px 25px rgb(0 0 0 / 8%), -15px -15px 30px white, -2px -2px 5px white;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    border-radius: 6px;
+    line-height: inherit;
+    margin: 10px;
+    height: auto;
+    font-family: 'Lato Regular';
+}
+input.rc-time-picker-input {
+    width: 80px;
+    cursor: pointer;
+}
+textarea {
+    min-height: 50px;
+    resize:vertical;
+}

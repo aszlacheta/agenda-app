@@ -1,8 +1,9 @@
 // general
 $backgroundColor: rgb(241, 241, 241);
+$transition: all 200ms;
 
 // header
-$headerHeight: 200px;
+$headerHeight: 15%;
 $headerBackgroundColor: transparent;
 
 $headerLinkWidth: 10%;
@@ -17,8 +18,9 @@ $headerLinkHoverLineHeight: 1px;
 $headerLinkHoverTransition: all 200ms ease-in-out;
 
 // footer
-$footerHeight: 100px;
-$footerPadding: 0 50px;
+$footerHeight: 12%;
+$footerMaxHeight: 80px;
+$footerPadding: 0 8%;
 $footerBackground: linear-gradient(90deg, rgba(0,0,0,0) 63%, rgba(0,0,0,0.08589373249299714) 95%, rgba(0,0,0,0.14) 100%);
 
 $footerTextFontSize: 0.7rem;

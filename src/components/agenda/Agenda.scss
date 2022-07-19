@@ -1,0 +1,36 @@
+.agenda {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    margin-top: 50px;
+    margin-left: 150px;
+
+    &:before {
+        --width: 100%;
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: calc(var(--width) * -1 + 30px);
+        width: var(--width);
+        height: 100%;
+        border: 8px solid black;
+        z-index: 0;
+    }
+
+    .agenda-container {
+        overflow: auto;
+    }
+}
+
+@media only screen and (max-width: 700px), (max-height: 500px) {
+    .agenda {
+        margin-left: 0px;
+        margin-top: 20px;
+
+        &::before {
+            top: -20px;
+        }
+    }
+}

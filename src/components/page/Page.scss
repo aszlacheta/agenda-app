@@ -3,6 +3,7 @@
 .page-children-container {
     display: flex;
     flex: 1;
+    overflow: hidden;
 
-    margin: variables.$pageMargin;
+    padding: variables.$pageMargin;
 }
