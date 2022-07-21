@@ -7,5 +7,10 @@
 export default function useRandomId (min = 0, max = 10000) {
   min = Math.ceil(min);
   max = Math.floor(max);
+
+  if (min < 0 || max < 0) {
+    return null;
+  }
+
   return Math.floor(Math.random() * (max - min)) + min;
 }

@@ -16,6 +16,8 @@ export default function useProposedTime (lastSetEntry, endingEntry) {
       index = i;
       return time;
     }
+
+    return undefined;
   });
 
   return index >= 0 ? availableDurations[index] : undefined;
