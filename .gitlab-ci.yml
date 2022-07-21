@@ -1,0 +1,35 @@
+image: node:latest
+
+stages:
+  - build
+  - unit_tests
+  - eslint
+
+install_deps:
+  stage: build
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+
+unit_tests:
+  stage: unit_tests
+  needs:
+    - install_deps
+  script:
+    - npm run test
+
+eslint:
+  stage: eslint
+  needs:
+    - install_deps
+  script:
+    - npm run eslint
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules/
