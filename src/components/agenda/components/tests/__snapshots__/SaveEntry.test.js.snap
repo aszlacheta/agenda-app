@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SaveEntry component should render properly 1`] = `
+<button
+  className="save-entry"
+  data-cy="save-button"
+  disabled={false}
+  onClick={[Function]}
+>
+  entry.buttons.save, 
+</button>
+`;

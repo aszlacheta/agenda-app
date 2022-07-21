@@ -1,4 +1,4 @@
-import configureStore from 'redux-mock-store'; // ES6 modules
+import configureStore from 'redux-mock-store';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Agenda from '../../agenda/Agenda';
@@ -10,6 +10,7 @@ jest.mock('../components/AddEntry');
 jest.mock('../components/AgendaEntry');
 jest.mock('../components/AgendaEntryEdit');
 jest.mock('../../../api/api');
+jest.unmock('react-redux');
 
 describe('Agenda', () => {
   it('check if renders properly', () => {
