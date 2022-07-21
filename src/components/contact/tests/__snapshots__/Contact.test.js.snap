@@ -4,6 +4,6 @@ exports[`Contact check if renders properly 1`] = `
 <div
   className="contact"
 >
-  This page is not implemented yet...
+  contact.notImplemented, 
 </div>
 `;

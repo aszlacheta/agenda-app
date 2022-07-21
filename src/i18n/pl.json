@@ -1,6 +1,22 @@
 {
+    "agenda": {
+        "buttons": {
+            "add": "+"
+        }
+    },
     "contact": {
         "notImplemented": "Ta strona nie jest jeszcze zaimplementowana..."
+    },
+    "entry": {
+        "buttons": {
+            "cancel": "anuluj",
+            "delete": "x",
+            "save": "zapisz"
+        },
+        "placeholders": {
+            "name": "Dodaj nazwę...",
+            "description": "Dodaj opis..."
+        }
     },
     "footer": {
         "label": "Wszelkie prawa zastrzeżone @ {{year}}"

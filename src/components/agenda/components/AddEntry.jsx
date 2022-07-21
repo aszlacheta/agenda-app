@@ -1,63 +1,50 @@
 import moment from 'moment';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAgendaEntry } from '../../../api/api';
-import { getRandomInt } from '../Agenda';
-import { getAgendaDay, getEditableDeletableEntries, getEntries, getFirstEntry, getLastEntry } from '../agendaSelectors';
+import useProposedTime from '../../../hooks/useProposedTime';
+import useRandomId from '../../../hooks/useRandomId';
+import { getAgendaDay, getEditableDeletableEntries, getFirstEntry, getLastEntry } from '../agendaSelectors';
 import { addEntry } from '../agendaSlice';
 import './AddEntry.scss';
 
 /**
  * Component used to add new entry to agenda
- * @param {*} param0 
- * @returns 
+ * @param {{isDisabled: boolean}} props isDisabled determines if component should be disabled or not
+ * @returns {ReactElement}
  */
-export default function AddEntry({ disabled }) {
+export default function AddEntry ({ isDisabled }) {
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-    const dispatch = useDispatch();
-    const agendaDay = useSelector(getAgendaDay);
-    const entries = useSelector(getEditableDeletableEntries);
-    const endingEntry = useSelector(getLastEntry);
-    const startingEntry = useSelector(getFirstEntry);
+  const agendaDay = useSelector(getAgendaDay);
+  const entries = useSelector(getEditableDeletableEntries);
+  const endingEntry = useSelector(getLastEntry);
+  const startingEntry = useSelector(getFirstEntry);
 
-    const onClick = () => {
-        const lastSet = entries.at(-1) || startingEntry;
-        const lastSetTime = moment(lastSet.startDate);
-        const mins = proposeTime(lastSet);
-        let startDate = moment(agendaDay).hour(lastSetTime.hour()).minute(lastSetTime.minute());
-        startDate.add(mins, 'm');
-        const newEntry = {
-            id: getRandomInt(),
-            startDate: startDate?.valueOf(),
-            name: 'Test',
-            description: '',
-            editable: true,
-            deletable: true,
-            isNew: true,
-            isPlanned: !!mins
-        }
-        dispatch(addEntry(newEntry));
-    }
+  /**
+     * Handler invoked on adding new entry
+     */
+  const onAdd = () => {
+    const lastSetEntry = entries.at(-1) || startingEntry;
+    const lastSetTime = moment(lastSetEntry.startDate);
+    const propopsedMins = useProposedTime(lastSetEntry, endingEntry);
 
-    const proposeTime = (lastSet) => {
-        const difference = moment.duration(endingEntry?.startDate - lastSet?.startDate);
-        const differenceMins = difference.asMinutes();
+    const newStartDate = moment(agendaDay).hour(lastSetTime.hour()).minute(lastSetTime.minute());
+    newStartDate.add(propopsedMins, 'm');
 
-        if (differenceMins > 60) {
-            return 60;
-        } else if (differenceMins > 30) {
-            return 30;
-        } else if (differenceMins > 15) {
-            return 15;
-        } else if (differenceMins > 10) {
-            return 10;
-        } else if (differenceMins > 5) {
-            return 5;
-        } else {
-            return undefined;
-        }
+    const newEntry = {
+      id: useRandomId(),
+      startDate: newStartDate?.valueOf(),
+      name: '',
+      description: '',
+      editable: true,
+      deletable: true,
+      isNew: true,
+      isPlanned: !!propopsedMins
+    };
+    dispatch(addEntry(newEntry));
+  };
 
-    }
-
-    return <button className="add-entry" onClick={onClick} disabled={disabled} data-cy="add-entry">+</button>
+  return <button className="add-entry" onClick={onAdd} disabled={isDisabled} data-cy="add-entry">{t('agenda.buttons.add')}</button>;
 }

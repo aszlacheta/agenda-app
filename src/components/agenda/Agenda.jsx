@@ -8,52 +8,47 @@ import AgendaEntry from './components/AgendaEntry';
 import AgendaEntryEdit from './components/AgendaEntryEdit';
 import './Agenda.scss';
 
-export const getRandomInt = (min = 0, max = 10000) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
+/**
+ * Component used to render agenda with its entries (rows)
+ * @param {{agendaId: string}} props agendaId - id of the agenda
+ * @returns {ReactElement} component
+ */
+export default function Agenda ({ agendaId }) {
+  const entries = useSelector(getEntries);
+  const areEntriesEditedNow = useSelector(isEntryEditedNow);
+  const dispatch = useDispatch();
 
-export default function Agenda({ agendaId }) {
+  useEffect(() => {
+    loadEntries();
+  }, []);
 
-    const entries = useSelector(getEntries)
-    const areEntriesEditedNow = useSelector(isEntryEditedNow)
-    const dispatch = useDispatch();
+  function loadEntries () {
+    const hasEntries = entries.length > 0;
 
-    useEffect(() => {
-        const hasEntries = entries.length > 0;
+    if (!hasEntries) {
+      getAgenda(agendaId)
+        .then(({ data }) => {
+          dispatch(setAgenda(data));
+        });
+    }
+  }
 
-        if (!hasEntries) {
-            getAgenda(agendaId)
-                .then(({ data }) => {
-                    dispatch(setAgenda(data))
-                })
-        }
-    }, []);
-
-    return <div className="agenda">
+  return <div className="agenda">
         <div className="agenda-container">
-            {entries.map((entry, index) => entry.isEdited ?
-                    <AgendaEntryEdit
-                        key={index}
-                        index={index + 1}
-                        agendaId={agendaId}
-                        isNew={entry.isNew}
-                        entry={entry}
-                        editable={entry.editable}
-                        deletable={entry.deletable}
-                    /> :
-                    <AgendaEntry
-                        key={index}
-                        index={index + 1}
-                        agendaId={agendaId}
-                        isNew={entry.isNew}
-                        entry={entry}
-                        editable={entry.editable}
-                        deletable={entry.deletable}
-                    />
+            {entries.map((entry, index) => entry.isEdited
+              ? <AgendaEntryEdit
+                    key={index}
+                    index={index + 1}
+                    entry={entry}
+                />
+              : <AgendaEntry
+                    key={index}
+                    index={index + 1}
+                    agendaId={agendaId}
+                    entry={entry}
+                />
             )}
         </div>
-        <AddEntry disabled={areEntriesEditedNow} />
-    </div>
+        <AddEntry isDisabled={areEntriesEditedNow} />
+    </div>;
 }

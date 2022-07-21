@@ -4,6 +4,11 @@ exports[`Agenda check if renders properly 1`] = `
 <div
   className="agenda"
 >
-  Agenda
+  <div
+    className="agenda-container"
+  />
+  <div
+    className="mocked-add-entry"
+  />
 </div>
 `;

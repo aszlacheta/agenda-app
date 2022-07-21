@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import moment from 'moment';
-import { getRandomInt } from '../components/agenda/Agenda';
+import useRandomId from '../hooks/useRandomId';
 import { DEFAULT_BACKEND_URL } from './api';
 
 const mock = new MockAdapter(axios);
@@ -13,7 +13,7 @@ mock.onGet(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+/*`))
     day: moment('2022-07-01').valueOf(),
     entries: [
       {
-        id: getRandomInt(),
+        id: useRandomId(),
         startDate: moment('2022-07-01 10:15:00').valueOf(),
         name: "Start of the training day",
         description: "Start of the training day description",
@@ -21,7 +21,7 @@ mock.onGet(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+/*`))
         deletable: false,
       },
       {
-        id: getRandomInt(),
+        id: useRandomId(),
         startDate: moment('2022-07-01 18:30:00').valueOf(),
         name: "End of the training day",
         description: "End of the training day description",

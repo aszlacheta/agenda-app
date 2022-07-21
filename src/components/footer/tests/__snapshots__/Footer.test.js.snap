@@ -3,10 +3,10 @@
 exports[`Footer check if renders properly 1`] = `
 <div
   className="footer"
+  data-cy="footer"
 >
   <span>
-    All rights reserved @ 
-    2022
+    footer.label, 2022
   </span>
 </div>
 `;

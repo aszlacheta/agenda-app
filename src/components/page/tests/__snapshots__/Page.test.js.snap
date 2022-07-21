@@ -7,6 +7,7 @@ Array [
   />,
   <div
     className="page-children-container"
+    data-cy="page"
   />,
   <div
     className="mocked-footer"
