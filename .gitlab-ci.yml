@@ -1,31 +1,46 @@
 image: node:latest
 
 stages:
-  - build
-  - unit_tests
-  - eslint
+  - install
+  - verify
 
 install_deps:
-  stage: build
+  stage: install
   script:
-    - npm install
+    - npm ci
   artifacts:
     paths:
       - node_modules
 
 unit_tests:
-  stage: unit_tests
+  stage: verify
   needs:
     - install_deps
   script:
     - npm run test
 
 eslint:
-  stage: eslint
+  stage: verify
   needs:
     - install_deps
   script:
     - npm run eslint
+
+e2e:
+  image: cypress/browsers:node16.14.2-slim-chrome100-ff99-edge
+  stage: verify
+  needs:
+    - install_deps
+  script:
+    - npm ci
+    - npm run start &
+    - npm run cypress:ci
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day  
 
 cache:
   key:
@@ -33,3 +48,5 @@ cache:
       - package-lock.json
   paths:
     - node_modules/
+    - /root/.cache/Cypress
+    - .npm/
