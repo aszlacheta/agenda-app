@@ -1,10 +1,10 @@
-import { When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
+import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
 
-When("I click on add button", () => {
+When('I click on add button', () => {
   cy.getC('add-entry').should('be.visible').click();
 });
 
-Then("I should see add new entry form", () => {
+Then('I should see add new entry form', () => {
   cy.getC('agenda-edit-entry').should('be.visible');
   cy.get('.start-date').should('be.visible');
   cy.getC('edit-name').should('be.visible');
@@ -31,7 +31,7 @@ Then('I see entry with {string}, {string} and {string}', (time, name, descriptio
     .children()
     .should('contain', time)
     .and('contain', name)
-    .and('contain', description)
+    .and('contain', description);
 });
 
 Then('I should not see entry with {string}, {string} and {string}', (time, name, description) => {
@@ -39,7 +39,7 @@ Then('I should not see entry with {string}, {string} and {string}', (time, name,
     .children()
     .should('not.contain', time)
     .and('not.contain', name)
-    .and('not.contain', description)
+    .and('not.contain', description);
 });
 
 When('I should see {int} entries', (number) => {

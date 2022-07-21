@@ -7,7 +7,7 @@ import { DEFAULT_BACKEND_URL } from './api';
 const mock = new MockAdapter(axios);
 
 // GET agenda details
-mock.onGet(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+/*`))
+mock.onGet(new RegExp(`${DEFAULT_BACKEND_URL}/agenda/\\d+/*`))
   .reply(200, {
     id: '1234',
     day: moment('2022-07-01').valueOf(),
@@ -15,29 +15,28 @@ mock.onGet(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+/*`))
       {
         id: useRandomId(),
         startDate: moment('2022-07-01 10:15:00').valueOf(),
-        name: "Start of the training day",
-        description: "Start of the training day description",
+        name: 'Start of the training day',
+        description: 'Start of the training day description',
         editable: false,
-        deletable: false,
+        deletable: false
       },
       {
         id: useRandomId(),
         startDate: moment('2022-07-01 18:30:00').valueOf(),
-        name: "End of the training day",
-        description: "End of the training day description",
+        name: 'End of the training day',
+        description: 'End of the training day description',
         editable: false,
-        deletable: false,
-      },
+        deletable: false
+      }
     ]
   });
 
-mock.onDelete(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+\/\\d+/*`))
+mock.onDelete(new RegExp(`${DEFAULT_BACKEND_URL}/agenda/\\d+/\\d+/*`))
   .reply(200, {
-    message: 'Success',
+    message: 'Success'
   });
 
-mock.onPost(new RegExp(`${DEFAULT_BACKEND_URL}\/agenda\/\\d+/*`))
+mock.onPost(new RegExp(`${DEFAULT_BACKEND_URL}/agenda/\\d+/*`))
   .reply(200, {
-    message: 'Success',
+    message: 'Success'
   });
-

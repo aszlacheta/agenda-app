@@ -1,16 +1,16 @@
-import i18n from "i18next";
-import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import I18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 import en from './i18n/en.json';
 import pl from './i18n/pl.json';
 
 const DEFAULT_LANGUAGE = 'en';
 const resources = {
   en: {
-    translation: en,
+    translation: en
   },
   pl: {
-    translation: pl,
+    translation: pl
   }
 };
 
@@ -20,7 +20,7 @@ i18n
   .init({
     resources,
     detection: {
-      order: ['navigator'],
+      order: ['navigator']
     },
     fallbackLng: DEFAULT_LANGUAGE,
     supportedLngs: ['en', 'pl'],

@@ -4,8 +4,8 @@
  * @param {number} max maxiumum value of the id
  * @returns {number} id
  */
-export default function useRandomId(min = 0, max = 10000) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+export default function useRandomId (min = 0, max = 10000) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }

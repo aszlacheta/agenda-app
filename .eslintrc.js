@@ -1,11 +1,13 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    'jest/globals': true
   },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'standard',
+    'plugin:cypress/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -15,15 +17,16 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    'react',
+    'jest'
   ],
   rules: {
-    "semi": ["error", "always"],
-    "react/prop-types": 0,
+    semi: ['error', 'always'],
+    'react/prop-types': 0
   },
   settings: {
     react: {
-      version: "detect", 
-    },
+      version: 'detect'
+    }
   }
-}
+};
