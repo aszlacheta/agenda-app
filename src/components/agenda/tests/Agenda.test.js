@@ -9,6 +9,7 @@ const mockStore = configureStore();
 jest.mock('../components/AddEntry');
 jest.mock('../components/AgendaEntry');
 jest.mock('../components/AgendaEntryEdit');
+jest.mock('../../../api/api');
 
 describe('Agenda', () => {
   it('check if renders properly', () => {
