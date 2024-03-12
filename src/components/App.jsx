@@ -13,9 +13,9 @@ export default function App () {
   return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Page><Agenda agendaId={useRandomId()} /></Page>} />
                 <Route path="agenda" element={<Page><Agenda agendaId={useRandomId()} /></Page>} />
                 <Route path="contact" element={<Page><Contact /></Page>} />
+                <Route path="*" element={<Page><Agenda agendaId={useRandomId()} /></Page>} />
             </Routes>
         </BrowserRouter>
   );

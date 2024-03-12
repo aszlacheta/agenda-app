@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 const port = process.env.PORT || 3001;
 
@@ -7,7 +8,10 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: 'bundle.[hash].js'
+    filename: 'bundle.[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    publicPath: './'
   },
   devtool: 'inline-source-map',
   resolve: {
@@ -40,7 +44,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'My agenda app',
-      template: './src/index.html'
+      template: './src/index.html',
+      baseUrl: process.env.NODE_ENV === 'development' ? '/' : 'https://aszlacheta.github.io/agenda-app/'
     }),
     new Dotenv()
   ],
